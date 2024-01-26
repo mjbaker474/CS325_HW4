@@ -32,7 +32,8 @@ def max_independent_set(nums):
 
     # For arrays longer than 2 elements, initialize cache and iterate through the input array to build the cache.
     cache = [0] * n
-    cache[0:2] = nums[0:2]
+    cache[0] = nums[0]
+    cache[1] = max(cache[0], nums[1])
     for i in range(2, n):
         # Ignore negatives
         if nums[i] >= 0:
@@ -57,6 +58,7 @@ def max_independent_set(nums):
     else:
         max_sum = []
         i = n - 1
+        maxsum = cache[i]
         while i >= 0:
             if cache[i] == cache[i - 1]:
                 i -= 1
@@ -64,6 +66,8 @@ def max_independent_set(nums):
                 if nums[i] > 0:
                     max_sum.append(nums[i])
                 i -= 2
+        if cache[0] == maxsum:
+            max_sum.append(maxsum)
         max_sum.reverse()
         return max_sum
 
