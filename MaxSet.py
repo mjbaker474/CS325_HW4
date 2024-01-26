@@ -35,14 +35,20 @@ def max_independent_set(nums):
     cache[0:2] = nums[0:2]
     for i in range(2, n):
         # Ignore negatives
-        if nums[i] > 0:
-            cache[i] = max(cache[i - 1], cache[i - 2] + nums[i])
+        if nums[i] >= 0:
+            if cache[i - 2] >= 0:
+                cache[i] = max(cache[i - 1], cache[i - 2] + nums[i])
+            else:
+                cache[i] = max(cache[i - 1], nums[i])
         else:
-            cache[i] = nums[i]
+            cache[i] = cache[i-1]
 
     # Check for edge cases of single element array, all negatives, or a sum of 0
     if cache[n - 1] < 0:
-        return []
+        if cache[0] == 0:
+            return [0]
+        else:
+            return []
     elif cache[n - 1] == 0:
         return [0]
 
@@ -55,7 +61,8 @@ def max_independent_set(nums):
             if cache[i] == cache[i - 1]:
                 i -= 1
             else:
-                max_sum.append(nums[i])
+                if nums[i] > 0:
+                    max_sum.append(nums[i])
                 i -= 2
         max_sum.reverse()
         return max_sum
