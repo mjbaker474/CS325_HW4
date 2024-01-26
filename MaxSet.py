@@ -5,9 +5,7 @@
 
 
 def main():
-    print(max_independent_set([-1, 0, -1, -10, -34]
-
-))
+    pass
 
 
 def max_independent_set(nums):
