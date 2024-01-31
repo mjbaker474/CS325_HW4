@@ -8,7 +8,7 @@ def main():
     pass
 
 
-def max_independent_set(nums):
+def max_independent_set(nums: list) -> list:
     """
     Determine the sequence consisting of non-consecutive elements in an array that produces the maximum sum.  Uses a
     dynamic programming approach that iterates through an input array and stores sub-problem solutions in a cache array.

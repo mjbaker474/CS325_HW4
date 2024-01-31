@@ -12,8 +12,11 @@ def powerset(inputSet: list) -> list:
     """
     Generates the power set for a given input set. A power set is the set of all subsets that can be made using elements
     from the original set. For example the power set of the set [1, 2] would be [[], [1], [2], [1,2]]
-    :param inputSet: list- A set of integers.
-    :return output_set: list-The powerset of the input set.
+
+    Args:
+        inputSet (list): A set of integers.
+    Returns:
+        output_set (list): The powerset of the input set.
     """
 
     # Base case of empty set ends recursion.
